@@ -24,14 +24,41 @@ class _MyAppState extends State<MyApp> {
           title: const Text('First Application'),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-                buttonName = (buttonName == 'Lorem') ? 'Ipsum' : 'Lorem';
-              });
-            },
-            child: Text(buttonName),
-          ),
+          child: (bottomNavbarIndex == 0)
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.grey,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.pink.shade100,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            buttonName =
+                                (buttonName == 'Lorem') ? 'Ipsum' : 'Lorem';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            buttonName =
+                                (buttonName == 'Lorem') ? 'Ipsum' : 'Lorem';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                    ],
+                  ),
+                )
+              : Image.asset('images/aurora.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
